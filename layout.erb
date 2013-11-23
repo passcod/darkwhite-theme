@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title><%= "#{title} - " if defined?(title) && title %><%= Blograph.meta['title'] %></title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic&subset=latin,greek" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1><a href="/"><%= Blograph.meta['header']['title'] %></a></h1>
+      <p class="subtitle"><%= Blograph.meta['header']['subtitle'] %></p>
+    </header>
+      <%= yield %>
+    <div class="container">
+    </div>
+    <footer>
+      <button class="flip" title="<%= Blograph.meta['locale']['flip'] %>">day</button>
+      <% feet = Blograph.meta['footer']
+      feet = [feet] if feet.is_a? String
+      feet.each do |foot| %><p><%= foot %></p><% end %>
+    </footer>
+    <script>
+      var flip = document.querySelector('.flip'),
+        html = document.querySelector('html'),
+        flipper = function(night) {
+          if (/flipped/.test(html.className) || !night) {
+            html.className = html.className.replace('flipped', '');
+            flip.innerHTML = 'day';
+            localStorage.setItem('flip', '');
+          } else {
+            html.className += ' flipped';
+            flip.innerHTML = 'night';
+            localStorage.setItem('flip', '✓');
+          }
+        };
+      flip.addEventListener('click', flipper, null);
+      flipper(localStorage.getItem('flip'));
+      setTimeout(function() {
+        html.className += ' js';
+      }, 1000);
+    </script>
+  </body>
+</html>

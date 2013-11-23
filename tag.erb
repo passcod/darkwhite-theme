@@ -1,0 +1,8 @@
+<header>
+  <h1><%= tag %></h1>
+  <% if taginfo %><p><%= taginfo %></p><% end %>
+</header>
+
+<% posts.reverse.each do |post| %>
+<%= yield_post(post, template: :_post_excerpt) %>
+<% end %>

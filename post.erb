@@ -1,0 +1,30 @@
+<article>
+  <header>
+    <h1><%= post.title %></h1>
+    <p rel="author">By <%= post.author %></p>
+    <p>Posted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a></p>
+    <% if post.tags.include?('nano') && post.tags.include?('chapter')
+      words = post.excerpt(-1).split.size
+      %><p><%= words < 21 ? words.to_words.capitalize : words
+        %> words (<%= Blograph::Post.all.select { |p| p.tags.include?('nano') && p.tags.include?('chapter') }.reduce(0) { |memo,p| memo + p.excerpt(-1).split.size } %> total)</p><% end %>
+    <% if !post.tags.empty?; tags = post.tags.dup
+      %><p>This <% if tags.length == 1 %>is a <% end %><%=
+        a "/tag/#{tags.first}", tags.first, rel: 'main tag'
+        %> <%
+        unless tags.length == 1
+          tags.shift  
+          %>is also tagged as <%= tags.map { |t|
+            a "/tag/#{t}", t, rel: 'tag' }.to_sentence %><%
+        end
+      %></p><%
+    end %>
+    <% if !post.parents.empty? %><p>It has <%= post.parents.length.to_words %> <abbr title="<%= Blograph.meta['locale']['parents'] %>"><%= "parent".pluralize post.parents.length %></abbr>: <%= post.parents.map { |p| a p.link, p.title, rel: 'up', title: "#{p.excerpt}&hellip;" }.to_sentence %></p><% end %>
+  </header>
+  <%= post.render %>
+  <footer>
+    <% if post.previous %><p>Travel back to the <a rel="prev" href="<%= post.previous.link %>" title="<%= post.previous.excerpt %>&hellip;">previous</a> article</p><% end %>
+    <% if post.next %><p>Skip forward to the <a rel="next" href="<%= post.next.link %>" title="<%= post.next.excerpt %>&hellip;">next</a> <%= post.previous ? 'one' : 'article' %></p><% end %>
+    <p><%= Blograph.meta['locale']['feedback'] %></p>
+    <% if !post.children.empty? %><p>This post has <%= post.children.length.to_words %> <abbr title="<%= Blograph.meta['locale']['children'] %>"><%= "child".pluralize post.children.length %></abbr>: <%= post.children.map { |p| a p.link, p.title, rel: 'down', title: "#{p.excerpt}&hellip;" }.to_sentence %></p><% end %>
+  </footer>
+</article>

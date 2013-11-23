@@ -1,0 +1,3 @@
+<% posts.reverse.each do |post| %>
+  <%= yield_post(post, template: :_post_excerpt) %>
+<% end %>
