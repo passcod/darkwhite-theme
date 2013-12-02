@@ -9,7 +9,7 @@
 
 html {
   color: #494949;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Alegreya', serif;
   font-size: 14px;
 }
 
@@ -83,6 +83,14 @@ body > header {
   border-bottom: 1px solid #494949;
   padding-bottom: 1em;
   margin: 1em 0;
+}
+
+body > header h1 {
+  font-family: 'Alegreya SC', sans-serif;
+}
+
+body > header p {
+  font-style: italic;
 }
 
 body > header a {
