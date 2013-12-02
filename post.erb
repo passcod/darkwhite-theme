@@ -20,5 +20,6 @@
     <% if post.previous %><p>Travel back to the <a rel="prev" href="<%= post.previous.link %>" title="<%= post.previous.excerpt %>&hellip;">previous</a> article</p><% end %>
     <% if post.next %><p>Skip forward to the <a rel="next" href="<%= post.next.link %>" title="<%= post.next.excerpt %>&hellip;">next</a> <%= post.previous ? 'one' : 'article' %></p><% end %>
     <p><%= Blograph.meta['locale']['feedback'] %></p>
+    <div id="disqus_thread"></div>
   </footer>
 </article>
