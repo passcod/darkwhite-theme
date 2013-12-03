@@ -110,6 +110,8 @@ body > footer {
 }
 
 article > header p, article > footer p {
+  font-family: 'Alegreya SC', Alegreya, serif;
+  font-size: 0.7em;
   text-align: right;
 }
 
@@ -120,7 +122,11 @@ article > header h1 {
 }
 
 article > header:before {
+  color: black;
   content: '❧';
+  float: left;
+  font-size: 1.25em;
+  padding: 0 0.25em;
 }
 
 .flipped, mark {
@@ -152,4 +158,8 @@ article > header:before {
 
 button.flip {
   float: right;
+}
+
+#disqus_thread {
+  margin-top: 1rem;
 }
