@@ -10,15 +10,14 @@
 html {
   color: #494949;
   font-family: 'Alegreya', serif;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 body {
   margin: 0 auto;
-  max-width: 41rem;
-  max-width: 90ch;
-  min-width: 7rem;
-  min-width: 30ch;
+  max-width: 600px;
+  max-width: 72ch;
+  min-width: 300px;
   padding: 1rem;
   width: 100%;
 }
@@ -80,17 +79,20 @@ hr:before {
 }
 
 body > header {
-  border-bottom: 1px solid #494949;
-  padding-bottom: 1em;
   margin: 1em 0;
+  padding-bottom: 1em;
+  text-align: center;
 }
 
 body > header h1 {
   font-family: 'Alegreya SC', sans-serif;
+  font-size: 2em;
+  font-weight: normal;
 }
 
 body > header p {
   font-style: italic;
+  text-align: inherit;
 }
 
 body > header a {
@@ -109,6 +111,16 @@ body > footer {
 
 article > header p, article > footer p {
   text-align: right;
+}
+
+article > header h1 {
+  font-family: 'Alegreya SC', sans-serif;
+  font-weight: normal;
+  font-size: 1.1em
+}
+
+article > header:before {
+  content: '❧';
 }
 
 .flipped, mark {
