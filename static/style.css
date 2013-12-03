@@ -115,13 +115,13 @@ article > header p, article > footer p {
   text-align: right;
 }
 
-article > header h1 {
+article h1 {
   font-family: 'Alegreya SC', sans-serif;
   font-weight: normal;
   font-size: 1.1em
 }
 
-article > header:before {
+article h1:before {
   color: black;
   content: '❧';
   float: left;
@@ -152,7 +152,7 @@ article > header:before {
   border-bottom-color: white;
 }
 
-.flipped body > header, .flipped body > footer {
+.flipped body > header, .flipped body > footer, #index {
   border-color: #AAA;
 }
 
@@ -162,4 +162,27 @@ button.flip {
 
 #disqus_thread {
   margin-top: 1rem;
+}
+
+.jump {
+  font-style: italics;
+  opacity: 0.5;
+  text-align: center;
+}
+
+#index {
+  border-top: 1px solid #494949;
+  margin: 2rem 0;
+  padding: 1rem 0;
+}
+
+#index > h1 {
+  font-weight: normal;
+  opacity: 0.5;
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+#index article p {
+  margin-left: 2rem;
 }

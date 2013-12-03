@@ -1,9 +1,10 @@
-<% rest = posts.reverse; first = rest.shift %>
-<%= yield_post(first, template: :post) %>
+<p class="jump"><a href="#index">(Jump to issue list)</a></p>
 
-<% unless rest.empty? %>
-<hr>
-<% rest.reverse.each do |post| %>
-  <%= yield_post(post, template: :_post_excerpt) %>
-<% end
-end %>
+<%= yield_post(posts.reverse.first, template: :post) %>
+
+<menu id="index">
+  <h1>All Issues</h1>
+  <% posts.reverse.each do |post| %>
+    <%= yield_post(post, template: :_post_excerpt) %>
+  <% end %>
+</menu>
