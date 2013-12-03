@@ -1,8 +1,7 @@
 <article>
   <header>
     <h1><%= post.title %></h1>
-    <p rel="author">By <%= post.author %></p>
-    <p>Posted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a></p>
+    <p>Posted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a>.</p>
     <% if !post.tags.empty?; tags = post.tags.dup
       %><p>This <% if tags.length == 1 %>is a <% end %><%=
         a "/tag/#{tags.first}", tags.first, rel: 'main tag'
@@ -12,13 +11,13 @@
           %>is also tagged as <%= tags.map { |t|
             a "/tag/#{t}", t, rel: 'tag' }.to_sentence %><%
         end
-      %></p><%
+      %>.</p><%
     end %>
   </header>
   <%= post.render %>
   <footer>
-    <% if post.previous %><p>Travel back to the <a rel="prev" href="<%= post.previous.link %>" title="<%= post.previous.excerpt %>&hellip;">previous</a> article</p><% end %>
-    <% if post.next %><p>Skip forward to the <a rel="next" href="<%= post.next.link %>" title="<%= post.next.excerpt %>&hellip;">next</a> <%= post.previous ? 'one' : 'article' %></p><% end %>
+    <% if post.previous %><p><a rel="prev" href="<%= post.previous.link %>" title="<%= post.previous.excerpt %>&hellip;">Previous</a> issue.</p><% end %>
+    <% if post.next %><p><a rel="next" href="<%= post.next.link %>" title="<%= post.next.excerpt %>&hellip;">Next</a> issue.</p><% end %>
     <p><%= Blograph.meta['locale']['feedback'] %></p>
     <div id="disqus_thread"></div>
   </footer>
