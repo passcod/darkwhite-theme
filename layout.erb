@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>var _gaq = _gaq || []; _gaq.push(['_setDomainName', location.hostname]);</script>
+    <script>
+      if (location.hostname.match(/darkwhite/)) {
+        location.hostname = location.hostname.replace(/darkwhite/, 'whitealdus');
+      }
+      var _gaq = _gaq || [];
+      _gaq.push(['_setDomainName', location.hostname]);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1">
     <title><%= "#{title} ❧ " if defined?(title) && title %><%= Blograph.meta['title'] %></title>
