@@ -1,7 +1,7 @@
 <% require 'time' %>
 <p class="jump"><a href="#index">(Jump to issue list)</a></p>
 
-<%= yield_post(posts.reverse.reject{|p|post.date > DateTime.now}.first, template: :post) %>
+<%= yield_post(posts.reverse.reject{|p|p.date > DateTime.now}.first, template: :post) %>
 
 <menu id="index">
   <h1>All Issues</h1>
