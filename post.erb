@@ -1,7 +1,7 @@
 <article>
   <header>
     <h1><%= post.title %></h1>
-    <p><%= post.future? ? 'To be p' : 'P' %>osted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a>.</p>
+    <p><%= post.future? ? 'To be p' : 'P' %>osted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>" title="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a>.</p>
     <% if !post.tags.empty?; tags = post.tags.dup
       %><p>This <% if tags.length == 1 %>is a <% end %><%=
         a "/tag/#{tags.first}", tags.first, rel: 'main tag'
