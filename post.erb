@@ -16,10 +16,15 @@
   </header>
   <%= post.render %>
   <footer>
-    <% if post.previous %><p><a rel="prev" href="<%= post.previous.link %>" title="<%= post.previous.excerpt %>&hellip;">Previous</a> issue.</p><% end %>
-    <% if post.next %><p><a rel="next" href="<%= post.next.link %>" title="<%= post.next.excerpt %>&hellip;">Next</a> issue.</p><% end %>
-    <p><%= Blograph.meta['locale']['feedback'] %></p>
-    <div id="disqus_thread"></div>
+    <% if post.previous && (!post.previous.future? || post.future?) %><p><a rel="prev" href="<%= post.previous.link %>" title="<%= post.previous.excerpt %>&hellip;">Previous</a> issue.</p><% end %>
+    <% if post.next && (!post.next.future? || post.future?) %><p><a rel="next" href="<%= post.next.link %>" title="<%= post.next.excerpt %>&hellip;">Next</a> issue.</p><% end %>
+    <% f = Blograph.meta['locale']['feedback'] %>
+    <% unless defined?(comments) && comments == false %>
+      <p><%= f %></p>
+      <div id="disqus_thread"></div>
+    <% else %>
+      <p><%= f.sub(/Comment/, "<a href='#{post.link}#disqus_thread'>Comment</a>") %></p>
+    <% end %>
   </footer>
 </article>
 <script>
