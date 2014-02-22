@@ -17,6 +17,7 @@
     out.join('') %></title>
     <link rel="stylesheet" href="/style.css">
     <link href="//fonts.googleapis.com/css?family=Alegreya+SC|Alegreya:400,400italic,700,700italic" rel="stylesheet">
+    <link href="/feed" type="application/atom+xml" rel="alternate" title="White Aldus Update Feed">
   </head>
   <body>
     <header>
@@ -51,6 +52,13 @@
       setTimeout(function() {
         html.className += ' js';
       }, 1000);
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+    <script>
+      Mousetrap.bind('f', function() {
+        console.log('f!');
+        console.log(getSelection());
+      });
     </script>
   </body>
 </html>
