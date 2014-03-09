@@ -27,7 +27,7 @@
     <link href="https://whitealdus.passcod.name<%= post.link %>" />
     <id>urn:uuid:<%= date_to_puid post.date %></id>
     <updated><%= post.date.rfc3339 %></updated>
-    <summary><%= Sanitize.clean(post.excerpt).strip %>&hellip;</summary>
+    <summary><%= post.render %></summary>
     <author>
       <name>Félix Saparelli</name>
       <email>whitealdus@passcod.name</email>
