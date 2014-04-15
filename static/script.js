@@ -39,8 +39,10 @@
       console.log('f!');
       
       var sel = rangy.getSelection();
-      applier.applyToSelection();
-      console.log(sel);
+      setTimeout(function() {
+        applier.applyToSelection();
+        console.log(sel);
+      }, 200);
     });
 
     Mousetrap.bind('j', function() {
