@@ -35,7 +35,7 @@
       normalize: true
     });
 
-    Mousetrap.bind('f', function() {
+    Mousetrap.bind(['f', 'shift shift'], function() {
       console.log('f!');
       
       var sel = rangy.getSelection();
@@ -45,7 +45,7 @@
       }, 200);
     });
 
-    Mousetrap.bind('j', function() {
+    Mousetrap.bind(['j', 'ctrl+enter'], function() {
       console.log('j!');
       
       var erratas = document.querySelectorAll('.errata');
