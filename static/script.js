@@ -57,10 +57,19 @@
       for (; i < erratas.length; ++i) {
         item = erratas[i];
         item.contentEditable = false;
-        item.className = '';
+        item.className = 'gc';
       }
 
       sendDiff();
+
+      setTimeout(function() {
+        var gc = document.querySelectorAll('.gc');
+        var i = 0, item;
+        for (; i < erratas.length; ++i) {
+          item = erratas[i];
+          item.outerHTML = item.innerHTML;
+        }
+      }, 20*1000);
     });
   });
 }());
