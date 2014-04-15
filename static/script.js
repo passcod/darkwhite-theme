@@ -4,6 +4,7 @@
 !function(e,t){typeof module!="undefined"?module.exports=t():typeof define=="function"&&typeof define.amd=="object"?define(t):this[e]=t()}("domready",function(){var e=[],t,n=document,r="DOMContentLoaded",i=/^loaded|^i|^c/.test(n.readyState);return i||n.addEventListener(r,t=function(){n.removeEventListener(r,t),i=1;while(t=e.shift())t()}),function(t){i?t():e.push(t)}})
 
 (function() {
+  var originals = [];
   var flip, flipper = function(night) {
     var html = document.documentElement;
     if (/flipped/.test(html.className) || !night) {
@@ -17,11 +18,51 @@
     }
   };
 
+  var gcRun = function() {
+    var gc = document.querySelectorAll('.gc');
+    var i = 0, item;
+    for (; i < gc.length; ++i) {
+      item = gc[i];
+      item.outerHTML = item.innerHTML;
+    }
+  };
+
+  var saveOriginals = function() {
+    var sources = document.querySelectorAll('article[data-href]:not([data-excerpt])');
+    var i = 0, item;
+    for (; i < sources.length; ++i) {
+      item = sources[i];
+      console.log('save original ' + item.dataset.href);
+      originals.push({
+        link: item.dataset.href,
+        content: item.innerHTML
+      });
+    }
+  };
+
   var sendDiff = function() {
-    console.log('501: Not implemented');
+    gcRun();
+    originals.forEach(function(original) {
+      var current = document.querySelector('article[data-href="' + original.link + '"]');
+      if (current !== null) {
+        if (current.innerHTML == original.content) {
+          console.log(original.link + ': no changes');
+        } else {
+          console.log(JsDiff.createPatch(
+            /@/.test(original.link) ?
+              original.link.replace(/@[^\/]+/, '@' + current.dataset.sha) :
+              '/@' + current.dataset.sha + original.link,
+            original.content,
+            current.innerHTML
+          ));
+        }
+      }
+    });
   };
 
   domready(function() {
+    saveOriginals();
+
     flip = document.querySelector('.flip');
     flip.addEventListener('click', flipper, null);
     flipper(localStorage.getItem('flip'));
@@ -61,15 +102,6 @@
       }
 
       sendDiff();
-
-      setTimeout(function() {
-        var gc = document.querySelectorAll('.gc');
-        var i = 0, item;
-        for (; i < erratas.length; ++i) {
-          item = erratas[i];
-          item.outerHTML = item.innerHTML;
-        }
-      }, 20*1000);
     });
   });
 }());
