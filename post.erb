@@ -1,4 +1,4 @@
-<article>
+<article data-sha="<%= post.commit %>">
   <header>
     <h1><%= post.title %></h1>
     <p><%= post.future? ? 'To be p' : 'P' %>osted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>" title="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a>.</p>
