@@ -188,3 +188,12 @@ button.flip {
 #index article p {
   margin-left: 2rem;
 }
+
+.errata {
+  border: 1px dotted red;
+  color: black;
+}
+
+.flipped .errata {
+  color: white;
+}

@@ -17,6 +17,10 @@
     }
   };
 
+  var sendDiff = function() {
+    console.log('501: Not implemented');
+  };
+
   domready(function() {
     flip = document.querySelector('.flip');
     flip.addEventListener('click', flipper, null);
@@ -27,13 +31,30 @@
 
     rangy.init();
     var applier = rangy.createCssClassApplier('errata', {
+      elementProperties: {contentEditable: true},
       normalize: true
     });
 
     Mousetrap.bind('f', function() {
       console.log('f!');
+      
+      var sel = rangy.getSelection();
       applier.applyToSelection();
-      console.log(document.querySelector('.errata'));
+      console.log(sel);
+    });
+
+    Mousetrap.bind('j', function() {
+      console.log('j!');
+      
+      var erratas = document.querySelectorAll('.errata');
+      var i = 0, item;
+      for (; i < erratas.length; ++i) {
+        item = erratas[i];
+        item.contentEditable = false;
+        item.className = '';
+      }
+
+      sendDiff();
     });
   });
 }());

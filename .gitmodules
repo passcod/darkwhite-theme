@@ -1,0 +1,3 @@
+[submodule "static/jsdiff"]
+	path = static/jsdiff
+	url = git://github.com/kpdecker/jsdiff.git
