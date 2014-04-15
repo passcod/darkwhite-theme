@@ -35,32 +35,7 @@
       feet = [feet] if feet.is_a? String
       feet.each do |foot| %><p><%= foot %></p><% end %>
     </footer>
-    <script>
-      var flip = document.querySelector('.flip'),
-        html = document.querySelector('html'),
-        flipper = function(night) {
-          if (/flipped/.test(html.className) || !night) {
-            html.className = html.className.replace('flipped', '');
-            flip.innerHTML = 'day';
-            localStorage.setItem('flip', '');
-          } else {
-            html.className += ' flipped';
-            flip.innerHTML = 'night';
-            localStorage.setItem('flip', '✓');
-          }
-        };
-      flip.addEventListener('click', flipper, null);
-      flipper(localStorage.getItem('flip'));
-      setTimeout(function() {
-        html.className += ' js';
-      }, 1000);
-    </script>
     <script src="//cdn.jsdelivr.net/g/rangy@1(rangy-core.js+rangy-cssclassapplier.js),mousetrap@1"></script>
-    <script>
-      Mousetrap.bind('f', function() {
-        console.log('f!');
-        console.log(rangy.getSelection());
-      });
-    </script>
+    <script src="/script.js" async></script>
   </body>
 </html>
