@@ -1,4 +1,4 @@
-<article data-sha="<%= post.commit %>">
+<article data-sha="<%= post.commit %>" data-slug="<%= post.slug %>" data-href="<%= post.link %>">
   <header>
     <h1><%= post.title %></h1>
     <p><%= post.future? ? 'To be p' : 'P' %>osted on <a href="<%= post.link %>"><date datetime="<%= post.date.rfc3339 %>" title="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %></date></a>.</p>
@@ -31,4 +31,4 @@
 var disqus_identifier = '<%= post.link %>',
     disqus_url = 'https://whitealdus.passcod.name' + disqus_identifier,
     disqus_title = '<%= post.title %>';</script>
-<script src="//passcod-darkwhite.disqus.com/embed.js" async></script>
+  <script src="//passcod-darkwhite.disqus.com/embed.js" async></script>

@@ -1,4 +1,4 @@
-<article data-sha="<%= post.commit %>">
+<article data-sha="<%= post.commit %>" data-slug="<%= post.slug %>" data-href="<%= post.link %>" data-excerpt>
   <h1><%= a post.link, post.title %></h1>
   <p><date datetime="<%= post.date.rfc3339 %>"><%= post.date.strftime Blograph.meta['locale']['date'] %>
     &mdash; <%= Sanitize.clean(post.excerpt, Sanitize::Config::RESTRICTED).strip %>&hellip;</p>
