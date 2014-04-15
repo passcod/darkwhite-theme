@@ -50,6 +50,7 @@
 
     Mousetrap.bind('ctrl+enter', function() {
       console.log('save!');
+      document.documentElement.focus();
       
       var erratas = document.querySelectorAll('.errata');
       var i = 0, item;
