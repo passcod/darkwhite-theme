@@ -31,12 +31,15 @@
 
     rangy.init();
     var applier = rangy.createCssClassApplier('errata', {
-      elementProperties: {contentEditable: true},
+      elementProperties: {
+        className: 'mousetrap',
+        contentEditable: true
+      },
       normalize: true
     });
 
-    Mousetrap.bind(['f', 'shift shift'], function() {
-      console.log('f!');
+    Mousetrap.bind('shift shift', function() {
+      console.log('edit!');
       
       var sel = rangy.getSelection();
       setTimeout(function() {
@@ -45,8 +48,8 @@
       }, 200);
     });
 
-    Mousetrap.bind(['j', 'ctrl+enter'], function() {
-      console.log('j!');
+    Mousetrap.bind('ctrl+enter', function() {
+      console.log('save!');
       
       var erratas = document.querySelectorAll('.errata');
       var i = 0, item;
