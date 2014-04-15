@@ -55,11 +55,11 @@
         html.className += ' js';
       }, 1000);
     </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/mousetrap/1.4.6/mousetrap.min.js"></script>
+    <script src="//cdn.jsdelivr.net/g/rangy@1(rangy-core.js+rangy-cssclassapplier.js),mousetrap@1"></script>
     <script>
       Mousetrap.bind('f', function() {
         console.log('f!');
-        console.log(getSelection());
+        console.log(rangy.getSelection());
       });
     </script>
   </body>
