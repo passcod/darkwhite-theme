@@ -48,13 +48,17 @@
         if (current.innerHTML == original.content) {
           console.log(original.link + ': no changes');
         } else {
-          console.log(JsDiff.createPatch(
+          var diff = JsDiff.createPatch(
             /@/.test(original.link) ?
               original.link.replace(/@[^\/]+/, '@' + current.dataset.sha) :
               '/@' + current.dataset.sha + original.link,
             original.content,
             current.innerHTML
-          ));
+          );
+
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'https://whitealdus-kifkif.herokuapp.com/pub/diff');
+          xhr.send(diff);
         }
       }
     });
