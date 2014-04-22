@@ -43,6 +43,11 @@ article img {
   max-width: 100%;
 }
 
+article ul {
+  list-style: none;
+  padding-left: 0;
+}
+
 button {
   background: none;
   border: 0px;
