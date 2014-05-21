@@ -1,3 +1,6 @@
+<% if post.nil? %>
+  <h1>Not found</h1>
+<% else %>
 <article data-sha="<%= post.commit %>" data-slug="<%= post.slug %>" data-href="<%= post.link %>">
   <header>
     <h1><%= post.title %></h1>
@@ -33,4 +36,5 @@
 <script src="//passcod-darkwhite.disqus.com/embed.js" async></script>
 <% else %>
   <p><%= f.sub(/Comment/, "<a href='#{post.link}#disqus_thread'>Comment</a>") %></p>
-<% end %>
+<% end
+end %>
